@@ -1,0 +1,650 @@
+:root {
+    --primary-color: #ff6f61;
+    --secondary-color: #ff3b2f;
+    --font-family: 'Poppins', sans-serif;
+    --border-radius: 10px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    direction: rtl;
+}
+
+header {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.auth-links {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.auth-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    position: relative; /* اضافه کردن این خط */
+}
+
+.search-bar input {
+    width: 400px;
+    padding: 12px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar input:hover, .search-bar input:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar button {
+    padding: 12px 25px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+}
+
+.search-bar button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-results {
+    display: none; /* پیش‌فرض پنهان باشد */
+    position: absolute; /* تغییر به absolute */
+    top: 100%; /* دقیقاً زیر نوار جست‌وجو */
+    left: 50%; /* وسط نوار جست‌وجو */
+    transform: translateX(-50%); /* وسط نوار جست‌وجو */
+    width: 700px; /* عرض بیشتر */
+    max-height: 400px; /* حداکثر ارتفاع */
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 15px 15px; /* گردی فقط در پایین */
+    z-index: 1000;
+    overflow-y: auto; /* اسکرول عمودی اگر محتوا زیاد باشد */
+    margin-top: 0; /* بدون فاصله از نوار جست‌وجو */
+}
+
+.search-results.open {
+    display: block;
+}
+
+.results-content {
+    padding: 15px; /* فاصله داخلی */
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* فاصله بیشتر بین عناصر */
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9; /* رنگ پس‌زمینه */
+    border-radius: 10px; /* گردی گوشه‌ها */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* سایه */
+}
+
+.result-item img {
+    width: 100px; /* عرض تصویر */
+    height: 100px; /* ارتفاع تصویر */
+    border-radius: 10px; /* گردی تصویر */
+    object-fit: cover; /* تصویر به‌درستی نمایش داده شود */
+}
+
+.result-item h4 {
+    margin: 0;
+    font-size: 18px; /* اندازه فونت عنوان */
+    color: #333; /* رنگ متن */
+    flex: 1; /* فضای باقی‌مانده را پر کند */
+}
+
+.result-item p {
+    margin: 5px 0;
+    font-size: 16px; /* اندازه فونت توضیحات */
+    color: #666; /* رنگ متن */
+    flex: 1; /* فضای باقی‌مانده را پر کند */
+}
+
+.result-item button {
+    background-color: var(--primary-color); /* رنگ دکمه */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* اندازه دکمه */
+    border-radius: 20px; /* گردی دکمه */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* دکمه کوچک نشود */
+}
+
+.result-item button:hover {
+    background-color: var(--secondary-color); /* رنگ دکمه هنگام hover */
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-control.prev {
+    left: 20px;
+}
+
+.carousel-control.next {
+    right: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 400px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+    padding: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+    display: grid;
+}
+
+.brands-section {
+    margin: 40px 0;
+    text-align: center;
+    position: relative;
+}
+
+.brands-section h2 {
+    font-size: 1.8em;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.brands-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.brand-item {
+    text-align: center;
+    flex: 0 0 auto;
+    width: 120px;
+}
+
+.brand-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.brand-item img:hover {
+    transform: scale(1.1);
+    border-color: var(--secondary-color);
+}
+
+.brand-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.brands-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.brands-control.prev {
+    left: 10px;
+}
+
+.brands-control.next {
+    right: 10px;
+}
+
+.brands-control:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.product-slider {
+    margin: 40px 0;
+    position: relative;
+}
+
+.product-slider h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+    font-size: 28px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+}
+
+.product-carousel {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 20px;
+    gap: 15px;
+    scroll-behavior: smooth;
+}
+
+.product {
+    flex: 0 0 auto;
+    width: 180px;
+    text-align: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: 'Vazirmatn', sans-serif;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.product p {
+    margin: 8px 0;
+    font-size: 14px;
+    font-family: 'Vazirmatn', sans-serif;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.product button {
+    padding: 10px 20px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 500;
+}
+
+.product button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    background: linear-gradient(90deg, #1a1a1a, #333);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    font-weight: 500;
+    border-top: 2px solid var(--primary-color);
+    font-family: 'Vazirmatn', sans-serif;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ریسپانسیو */
+@media only screen and (max-width: 768px) {
+    .search-results {
+        width: 90%; /* عرض بیشتر در دستگاه‌های کوچک‌تر */
+        max-width: 90%; /* حداکثر عرض بیشتر */
+    }
+
+    .result-item {
+        flex-direction: column; /* عناصر به‌صورت عمودی چیده شوند */
+        align-items: flex-start; /* تراز به چپ */
+    }
+
+    .result-item button {
+        width: 100%; /* دکمه عرض کامل */
+    }
+
+
+    .logo {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .auth-links {
+        gap: 10px;
+    }
+
+    .search-bar input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-bar button {
+        width: 100%;
+    }
+
+    .carousel {
+        height: 200px;
+    }
+
+    .carousel-caption {
+        font-size: 1em;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .brand-item {
+        width: 80px;
+    }
+
+    .brand-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .product {
+        width: calc(50% - 10px);
+    }
+
+    .dropdown-content {
+        min-width: 200px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .product {
+        width: calc(100% - 10px);
+    }
+
+    .logo {
+        font-size: 1em;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dropdown-content {
+        min-width: 150px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* استایل آیکون همبرگری */
+.menu-icon {
+    display: none; /* پیش‌فرض پنهان باشد */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* نمایش آیکون همبرگری فقط در موبایل */
+@media only screen and (max-width: 768px) {
+    .menu-icon {
+        display: block; /* نمایش آیکون در موبایل */
+    }
+
+
+    nav {
+        display: none; /* منوی اصلی در موبایل پنهان باشد */
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        top: 60px; /* فاصله از بالای هدر */
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    nav a {
+        padding: 10px;
+        border-bottom: 1px solid #eee; /* خط جداکننده بین آیتم‌ها */
+        color: #333; /* رنگ متن در موبایل */
+    }
+
+    nav a:last-child {
+        border-bottom: none; /* حذف خط آخر */
+    }
+
+    .dropdown-content {
+        display: none; /* پیش‌فرض پنهان باشد */
+        position: static; /* تغییر موقعیت به حالت عادی */
+        background-color: #f9f9f9;
+        box-shadow: none;
+        width: 100%; /* عرض کامل */
+        padding: 0; /* حذف padding */
+    }
+
+    .dropdown-content a {
+        display: block; /* نمایش آیتم‌ها به‌صورت عمودی */
+        padding: 10px;
+        border-bottom: 1px solid #eee; /* خط جداکننده بین آیتم‌ها */
+        color: #333; /* رنگ متن */
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none; /* حذف خط آخر */
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block; /* نمایش منوی کشویی */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .search-bar {
+        flex-direction: row; /* تغییر جهت به افقی */
+        align-items: center; /* تراز به مرکز */
+        justify-content: center; /* تراز افقی به مرکز */
+    }
+
+    .search-bar input {
+        width: 60%; /* عرض نوار جستجو */
+        margin-right: 10px; /* فاصله بین نوار جستجو و دکمه */
+        margin-bottom: 0; /* حذف margin-bottom */
+    }
+
+    .search-bar button {
+        width: auto; /* عرض دکمه جستجو به صورت خودکار */
+        padding: 12px; /* padding یکسان برای دکمه */
+    }
+
+    .search-results {
+        width: 90%; /* عرض نتایج جستجو */
+        max-width: 90%; /* حداکثر عرض نتایج جستجو */
+    }
+}

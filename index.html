@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه لبتاب وارسته</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo">فروشگاه لبتاب وارسته</div>
+            <div class="auth-links">
+                <a href="#" class="auth-link">ورود</a>
+                <a href="#" class="auth-link">ثبت‌نام</a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- آیکون همبرگری -->
+        </div>
+        <nav id="nav-menu">
+            <a href="#">خانه</a>
+            <div class="dropdown">
+                <a href="#" onclick="toggleDropdown(event)">دسته‌بندی‌ها</a>
+                <div class="dropdown-content">
+                    <a href="#">لپ تاپ لنوو</a>
+                    <a href="#">لپ تاپ ایسوس</a>
+                    <a href="#">مک بوک</a>
+                    <a href="#">لپ تاپ مایکروسافت</a>
+                    <a href="#">لپ تاپ HP</a>
+                    <a href="#">لپ تاپ ایسر</a>
+                    <a href="#">لپ تاپ هواوی</a>
+                    <a href="#">لپ تاپ دل</a>
+                    <a href="#">لپ تاپ گیمینگ</a>
+                    <a href="#">لپ تاپ دانشجویی</a>
+                </div>
+            </div>
+            <a href="#">محصولات جدید</a>
+            <a href="#">تماس با ما</a>
+        </nav>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="جستجوی محصول...">
+        <button id="search-button">جستجو</button>
+        <div id="search-results" class="search-results">
+            <div class="results-content">
+                <!-- نتایج جست‌وجو اینجا نمایش داده می‌شوند -->
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش اسلایدر -->
+    <div class="carousel">
+        <div class="carousel-item active">
+            <img src="slider/slide1.jpg" alt="اسلاید 1">
+            <div class="carousel-caption">بهترین قیمت لپتاپ‌ها</div>
+        </div>
+        <div class="carousel-item">
+            <img src="slider/slide2.jpg" alt="اسلاید 2">
+            <div class="carousel-caption">تنوع گسترده محصولات</div>
+        </div>
+        <div class="carousel-item">
+            <img src="slider/slide3.jpg" alt="اسلاید 3">
+            <div class="carousel-caption">ارسال رایگان به سراسر کشور</div>
+        </div>
+        <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <!-- بخش دایره‌ای برندها -->
+    <section class="brands-section">
+        <h2>برندهای محبوب</h2>
+        <div class="brands-carousel">
+            <div class="brand-item">
+                <img src="dayer/leg1.jpg" alt="HP">
+                <p>HP</p>
+            </div>
+            <div class="brand-item">
+                <img src="dayer/leg2.jpg" alt="Asus">
+                <p>Asus</p>
+            </div>
+            <div class="brand-item">
+                <img src="dayer/leg3.jpg" alt="Dell">
+                <p>Dell</p>
+            </div>
+            <div class="brand-item">
+                <img src="dayer/leg4.jpg" alt="Apple">
+                <p>Apple</p>
+            </div>
+            <div class="brand-item">
+                <img src="dayer/leg5.jpg" alt="Lenovo">
+                <p>Lenovo</p>
+            </div>
+            <div class="brand-item">
+                <img src="dayer/leg6.jpg" alt="Acer">
+                <p>Acer</p>
+            </div>
+        </div>
+        <button class="brands-control prev" onclick="scrollBrands(-1)">&#10094;</button>
+        <button class="brands-control next" onclick="scrollBrands(1)">&#10095;</button>
+    </section>
+
+    <!-- اسلایدر محصولات -->
+    <section class="product-slider">
+        <h2>محصولات پیشنهادی</h2>
+        <div class="product-carousel">
+            <div class="product">
+                <img src="images/laptop1.jpg" alt="لپ‌تاپ ایسوس">
+                <h3>لپ‌تاپ ایسوس</h3>
+                <p>قیمت: ۱۴,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop11 (2).jpg" alt="لپ‌تاپ ایسوس">
+                <h3> Asus Tuf F15 Z512ZC </h3>
+                <p>قیمت: ۵۵,۰۰۰,۰۰۰ تومان</p>
+                <a href="laptops/TUF Gaming F15/asus-laptop.html"><button>خرید</button></a>
+            </div>
+            <div class="product">
+                <img src="images/laptop3.jpg" alt="لپ‌تاپ اپل">
+                <h3>لپ‌تاپ اپل</h3>
+                <p>قیمت: ۳۰,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop4.jpg" alt="لپتاپ 4">
+                <h3>لپتاپ لنوو</h3>
+                <p>قیمت: ۱۲,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop5.jpg" alt="لپتاپ 5">
+                <h3>لپتاپ ایسوس</h3>
+                <p>قیمت: ۱۵,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop6.jpg" alt="لپتاپ 6">
+                <h3>لپتاپ اچ‌پی</h3>
+                <p>قیمت: ۱۸,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop7.jpg" alt="لپتاپ 7">
+                <h3>لپتاپ سامسونگ</h3>
+                <p>قیمت: ۲۰,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop8.jpg" alt="لپتاپ 8">
+                <h3>لپتاپ مایکروسافت</h3>
+                <p>قیمت: ۲۵,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop9.jpg" alt="لپتاپ 9">
+                <h3>لپتاپ ایسر</h3>
+                <p>قیمت: ۱۳,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop10.jpg" alt="لپتاپ 10">
+                <h3>لپتاپ ریزر</h3>
+                <p>قیمت: ۲۸,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop11.jpg" alt="لپتاپ 11">
+                <h3>لپتاپ گیگابایت</h3>
+                <p>قیمت: ۱۷,۰۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop12.jpg" alt="لپتاپ 12">
+                <h3>لپتاپ هواوی</h3>
+                <p>قیمت: ۱۴,۵۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+            <div class="product">
+                <img src="images/laptop13.jpg" alt="لپتاپ 13">
+                <h3>لپتاپ شیائومی</h3>
+                <p>قیمت: ۱۲,۵۰۰,۰۰۰ تومان</p>
+                <button>خرید</button>
+            </div>
+        </div>
+        <button class="carousel-control prev" onclick="prevProduct()">&#10094;</button>
+        <button class="carousel-control next" onclick="nextProduct()">&#10095;</button>
+    </section>
+
+    <footer>
+        تمامی حقوق برای فروشگاه لبتاب وارسته محفوظ است.
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
